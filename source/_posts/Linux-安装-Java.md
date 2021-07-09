@@ -27,6 +27,9 @@ $ export PATH=${JAVA_HOME}/bin:$PATH
 ```bash
 $ source /etc/profile
 ```
+* `source`相当于把profile里面的环境变量加载出来，相当于`.`。如果不用`source` 选择重新打开shell窗口依然可以加载出来，是因为profile是系统的配置文件，每打开一个shell会自动加载。
+* 当然你也可以选择在任意文件加以上变量，然后用source加载出来都可以使用，只不过不是系统文件重新打开不会自动加载
+* 关闭shell后所有环境变量都会被释放。
 ### 校验
 ```bash
 $ java -version

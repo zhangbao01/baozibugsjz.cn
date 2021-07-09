@@ -1,0 +1,27 @@
+分布式缓存
+https://gitee.com/shishan100/Java-Interview-Advanced#
+
+2.生产问题
+      1. fork耗时导致高并发请求下延时(最好控制在10g中
+fork子进程需要拷贝父进程的空间内页表
+
+       2. 避免复制风暴
+ 别一个master挂多个slave导致都全量复制的时候,占用带宽    
+可以slave上在去挂slave,即星状变成树
+
+       3.匹配key
+ keys指令导致的高cpu问题(禁止)
+如果必须通过scan扩容不会重复(高位累加)&缩容的时候会重复
+
+       4.危险命令
+flushall:清空所有数据。
+flushdb:清空本库数据。 请确认在没有请求的情况下再执行以上操作。(深夜更新时)另外，redis 提供了异步清空命令
+flushall async 和flushdb async 异步清空数据，不会阻塞当前线程
+
+
+
+hystrix存在问题,熔断打开后过了滑动窗口的时间后只根据一次请求的结果来确定是否继续熔断(二次开发统计一定比率)
+
+
+TCC事务模式
+http://seata.io/zh-cn/docs/dev/mode/tcc-mode.html
